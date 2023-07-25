@@ -11,7 +11,7 @@ function fetchPokemon(id) {
 
 function fetchPokemons(number) {
     for (let i = 1; i <= number; i++) {
-        fetchPokemon(i);
+        fetchPokemon(i-1);
     }
 }
 

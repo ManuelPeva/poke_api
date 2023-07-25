@@ -18,7 +18,6 @@ function fetchPokemon(id) {
 function fetchPokemons(offset,limit) {
    spinner.style.display = "block";
     for (let i = offset; i <= offset + limit; i++) {
-        //spinner.style.display = "block";
         fetchPokemon(i-1);
     }
 }

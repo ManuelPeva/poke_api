@@ -1,21 +1,27 @@
 const pokemonContainer = document.querySelector('.pokemon-container');
+const spiner = document.querySelector('#spinner');
+
+let offset = 1;
+let limit = 8;
 
 function fetchPokemon(id) {
     fetch(`https://pokeapi.co/api/v2/pokemon/${id}/`) //link de la poke api
         .then(res => res.json())
         .then((data) => {
             createPokemon(data);
+            //spinner.style.display = "none";
         })
     //.then(data => console.log(data)) //mostrar resultado en consola
 }
 
-function fetchPokemons(number) {
-    for (let i = 1; i <= number; i++) {
-        fetchPokemon(i-1);
+function fetchPokemons(offset, limit) {
+    //spinner.style.display = "block";
+    for (let i = offset; i <= offset + limit; i++) {
+        fetchPokemon(i);
     }
 }
 
-fetchPokemons(12); //numero de pokemones en la pagina
+//fetchPokemons(12); //numero de pokemones en la pagina
 
 function createPokemon(pokemon) { //creación de elementos 
     const card = document.createElement('div');
@@ -46,4 +52,4 @@ function createPokemon(pokemon) { //creación de elementos
 
 }
 
-fetchPokemon(12);
+fetchPokemon(offset, limit);
